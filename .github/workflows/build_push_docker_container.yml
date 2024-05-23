@@ -5,10 +5,10 @@ on:
     inputs:
       dockerfile-name:
         required: true
-        default: Dockerfile_new
+        default: Dockerfile
       image-name:
         required: true
-        default: Sample
+        default: label-studio-OG
     
 jobs:
   build-and-push:
@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./cicd_py_infosys/${{ github.event.inputs.dockerfile-name }}
+          file: ./${{ github.event.inputs.dockerfile-name }}
           push: true
           tags: anandsr2522/python_anaconda:${{ github.event.inputs.image-name }}
           #tags: mattburnsoutline/outline-global:${{ github.event.inputs.image-name }}
